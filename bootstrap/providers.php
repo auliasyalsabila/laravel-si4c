@@ -2,7 +2,6 @@
 
 use App\Providers\AppServiceProvider;
 
-use Illuminate\Database/
 return [
-    AppServiceProvider::class,
+    App\Providers\AppServiceProvider::class,
 ];

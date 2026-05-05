@@ -8,3 +8,4 @@ Route::get('/', function () {
 });
 
 Route::resource('fakultas', FakultasController::class);
+Route::resource('prodis', PeriodeController::class);
