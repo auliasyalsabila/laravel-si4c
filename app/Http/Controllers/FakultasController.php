@@ -31,7 +31,18 @@ class FakultasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validasi data yang dikirim dari form
+        $input = $request -> validate( [
+            'nama' => 'required|unique:fakultas',
+            'singkatan' => 'required',
+            'dekan' => 'required'
+        ]);
+
+        // simpan data ke database
+        fakultas::create($input);
+
+        // redirect ke halaman index dengan pesan sukses
+        return redirect()->route('fakultas.index');
     }
 
     /**

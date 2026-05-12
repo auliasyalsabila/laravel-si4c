@@ -1,3 +1,8 @@
+@extends('main')
+@section('title','tambah fakultas')
+@section('content')
+    <form action="{{ route('fakultas.create') }}" method="post"></form>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,19 +16,29 @@
 </head>
 
 <body>
-    <form action="/fakultas" method="post">
-        <div class="m-3">
-            <h5>form pengisian data fakultas</h5>
+    <form action="{{ route('fakultas.store') }}" method="post">
+        
+        <div class="form-group">
             <label for="nama" class="form-label">nama fakultas</label>
-            <input type="text" class="form-control" id="nama" placeholder="masukkan nama fakultas...">
-
+            <input name = 'nama' type="text" class="form-control" value="{{ old('nama') }}" placeholder="masukkan nama fakultas...">
+            @error('nama')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="form-group">
             <label for="singkatan" class="form-label">singkatan fakultas</label>
-            <input type="text" class="form-control" id="singkatan" placeholder="masukkan singkatan fakultas...">
-
+            <input name ='singkatan' type="text" class="form-control" value="{{ old('singkatan') }}" placeholder="masukkan singkatan fakultas...">
+            @error('singkatan')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="form-group">
             <label for="dekan" class="form-label">nama dekan</label>
-            <input type="text" class="form-control" id="dekan" placeholder="masukkan nama dekan...">
-            
-                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+            <input name='dekan' type="text" class="form-control" value="{{ old('dekan') }}" placeholder="masukkan nama dekan...">
+            @error('dekan')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+                <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
@@ -32,3 +47,4 @@
 </body>
 
 </html>
+@endsection

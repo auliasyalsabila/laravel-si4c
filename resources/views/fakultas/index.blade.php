@@ -2,7 +2,7 @@
 @section ('title', 'fakultas')
     
 @section('content')
-<a href="{{ route('fakultas.create') }}" class="btn btn-primary mb-3">Tambah Fakultas</a>
+<a href={{ route('fakultas.create') }} class="btn btn-primary mb-3">Tambah Fakultas</a>
 <table class="table table-bordered">
     <tr>
         <th>No</th>
