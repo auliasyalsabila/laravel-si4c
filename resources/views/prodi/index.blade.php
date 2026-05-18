@@ -3,6 +3,8 @@
 
 @section('content')
 <table class="table table-bordered tabel-hover">
+    <a href={{ route('prodi.create') }} class="btn btn-primary mb-3">Tambah Prodi</a>
+    <table class="table table-bordered">
     <tr>
         <th>No</th>
         <th>Nama Prodi</th>

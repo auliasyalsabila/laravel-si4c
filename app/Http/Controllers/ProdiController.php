@@ -1,9 +1,13 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
+
+use App\Models\Fakultas;
 use App\Models\Prodi;
 use Illuminate\Http\Request;
+
 
 class ProdiController extends Controller
 {
@@ -16,21 +20,37 @@ class ProdiController extends Controller
     return view('prodi.index', compact('prodis'));
     }
 
+
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        $fakultas = Fakultas::all(); //untuk list dropdown fakultas
+        return view('prodi.create', compact('fakultas'));
     }
+
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+        // validasi data yang dikirim dari form
+        $input = $request -> validate( [
+            'nama_prodi' => 'required|unique:prodi',
+            'singkatan' => 'required|max:2',
+            'kaprodi' => 'required',
+            'fakultas_id' => 'required'
+        ]);
+
+        // simpan data ke database
+        prodi::create($input);
+
+        // redirect ke halaman index dengan pesan sukses
+        return redirect()->route('prodi.index');
     }
+
 
     /**
      * Display the specified resource.
@@ -40,6 +60,7 @@ class ProdiController extends Controller
         //
     }
 
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -47,6 +68,7 @@ class ProdiController extends Controller
     {
         //
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -56,6 +78,7 @@ class ProdiController extends Controller
         //
     }
 
+
     /**
      * Remove the specified resource from storage.
      */
@@ -64,3 +87,5 @@ class ProdiController extends Controller
         //
     }
 }
+
+
