@@ -38,7 +38,7 @@ class ProdiController extends Controller
     {
         // validasi data yang dikirim dari form
         $input = $request -> validate( [
-            'nama_prodi' => 'required|unique:prodi',
+'nama_prodi' => 'required|unique:prodis,nama_prodi',
             'singkatan' => 'required|max:2',
             'kaprodi' => 'required',
             'fakultas_id' => 'required'
@@ -82,9 +82,12 @@ class ProdiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Prodi $prodi)
+    public function destroy($prodi)
     {
-        //
+        $prodi = Prodi::find($prodi);
+        $prodi->delete();
+        return redirect()->route('prodi.index')
+        ->with('success', 'Data prodi berhasil dihapus');
     }
 }
 

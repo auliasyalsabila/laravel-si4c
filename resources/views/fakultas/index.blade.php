@@ -1,26 +1,43 @@
 @extends('main')
-@section ('title', 'fakultas')
-    
-@section('content')
-<a href={{ route('fakultas.create') }} class="btn btn-primary mb-3">Tambah Fakultas</a>
-<table class="table table-bordered">
-    <tr>
-        <th>No</th>
-        <th>Nama Fakultas</th>
-        <th>Singkatan</th>
-        <th>Dekan</th>
-    </tr>
+@section('title', 'fakultas')
 
-    @foreach ($result as $item)
-    <tr>
-        <td>{{ $loop ->iteration }}</td>
-        <td>{{ $item->nama }}</td>
-        <td>{{ $item->singkatan }}</td>
-        <td>{{ $item->dekan }}</td>
-    </tr>
-    @endforeach
-</table>
-{{-- 
+@section('content')
+    <a href={{ route('fakultas.create') }} class="btn btn-primary mb-3">Tambah Fakultas</a>
+    @session('success')
+        <div class="alert alert-success">
+            {{ $value }}
+        </div>
+    @endsession
+    <table class="table table-bordered">
+        <tr>
+            <th>No</th>
+            <th>Nama Fakultas</th>
+            <th>Singkatan</th>
+            <th>Dekan</th>
+            <th>Aksi</th>
+        </tr>
+
+        @foreach ($result as $item)
+            <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $item->nama }}</td>
+                <td>{{ $item->singkatan }}</td>
+                <td>{{ $item->dekan }}</td>
+                <td>
+                    <a href="{{ route('fakultas.edit', $item->id) }}" 
+                    class="btn btn-xs btn-info btn-rounded">Edit</a>
+                    <form method="POST" action="{{ route('fakultas.destroy', $item->id) }}">
+                        @csrf
+                        <input name="_method" type="hidden" value="DELETE">
+                        <button type="submit" class="btn btn-xs btn-danger btn-rounded show_confirm" 
+                        data-toggle="tooltip"
+                            title='Delete' data-nama='{{ $item->nama }}'>Hapus</button>
+                    </form>
+                </td>
+            </tr>
+        @endforeach
+    </table>
+    {{-- 
 @foreach ($result as $item)
     {{ $item->nama, }} - {{ $item->singkatan }} - {{ $item->dekan }} <br/>
     
