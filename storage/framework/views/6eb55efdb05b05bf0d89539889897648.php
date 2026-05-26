@@ -29,7 +29,7 @@
     <!--begin::Accessibility Features-->
     <!-- Skip links will be dynamically added by accessibility.js -->
     <meta name="supported-color-schemes" content="light dark" />
-    <link rel="preload" href="{{  url('css/adminlte.css') }} as="style" />
+    <link rel="preload" href="<?php echo e(url('css/adminlte.css')); ?> as="style" />
     <!--end::Accessibility Features-->
 
     <!--begin::Fonts-->
@@ -54,7 +54,7 @@
     <!--begin::Third Party Plugin(Bootstrap Icons)-->
     <link
       rel="stylesheet"
-      href="{{  url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css') }}"
+      href="<?php echo e(url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css')); ?>"
       crossorigin="anonymous"
     />
     <!--end::Third Party Plugin(Bootstrap Icons)-->
@@ -230,7 +230,8 @@
             <li class="nav-item dropdown user-menu">
               <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                 <img
-                  src={{ url('/assets/img/user2-160x160.jpg')}}
+                  src=<?php echo e(url('/assets/img/user2-160x160.jpg')); ?>
+
                   class="user-image rounded-circle shadow"
                   alt="User Image"
                 />
@@ -240,7 +241,8 @@
                 <!--begin::User Image-->
                 <li class="user-header text-bg-primary">
                   <img
-                    src={{ url('/assets/img/user2-160x160.jpg')}}
+                    src=<?php echo e(url('/assets/img/user2-160x160.jpg')); ?>
+
                     class="rounded-circle shadow"
                     alt="User Image"
                   />
@@ -290,7 +292,8 @@
           <a href="../index.html" class="brand-link">
             <!--begin::Brand Image-->
             <img
-              src={{ url('/assets/img/AdminLTELogo.png') }}
+              src=<?php echo e(url('/assets/img/AdminLTELogo.png')); ?>
+
               alt="AdminLTE Logo"
               class="brand-image opacity-75 shadow"
             />
@@ -346,25 +349,25 @@
 
               </li>
               <li class="nav-item">
-                <a href="{{ url('fakultas')}}" class="nav-link">
+                <a href="<?php echo e(url('fakultas')); ?>" class="nav-link">
                   <i class="nav-icon bi bi-bank"></i>
                   <p>fakultas</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{url('prodi')}}" class="nav-link">
+                <a href="<?php echo e(url('prodi')); ?>" class="nav-link">
                   <i class="nav-icon bi bi-map"></i>
                   <p>prodi</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{url('mahasiswa')}}" class="nav-link">
+                <a href="<?php echo e(url('mahasiswa')); ?>" class="nav-link">
                   <i class="nav-icon bi bi-person-arms-up"></i>
                   <p>mahasiswa</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{url('periode')}}" class="nav-link">
+                <a href="<?php echo e(url('periode')); ?>" class="nav-link">
                   <i class="nav-icon bi bi-people"></i>
                   <p>periode</p>
                 </a>
@@ -791,7 +794,7 @@
             <div class="row">
               <div class="col-sm-6">
                 <h3 class="mb-0">
-                  @yield('title')
+                  <?php echo $__env->yieldContent('title'); ?>
                 </h3>
               </div>
               <div class="col-sm-6">
@@ -839,7 +842,7 @@
                     </div>
                   </div>
                   <div class="card-body">
-                    @yield('content')
+                    <?php echo $__env->yieldContent('content'); ?>
                   </div>
                   <!-- /.card-body -->
                   <div class="card-footer">Footer</div>
@@ -920,9 +923,9 @@
     <!--end::OverlayScrollbars Configure-->
     <!--end::Script-->
 
-    {{--  jquery --}}
+    
     <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous"></script>
-    {{-- sweet alert --}}
+    
     
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
 <script type="text/javascript">
@@ -953,3 +956,4 @@
   </body>
   <!--end::Body-->
 </html>
+<?php /**PATH D:\2428240155\laravel-si4c\laravel-si4c\resources\views/main.blade.php ENDPATH**/ ?>
