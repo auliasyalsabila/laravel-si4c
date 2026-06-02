@@ -7,65 +7,25 @@ use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //DB
-        $jumlahmahasiswa = DB::select('
-            SELECT prodis.nama AS nama_prodi, COUNT(mahasiswas.id) AS jumlah_mahasiswa
-            FROM prodis
-            LEFT JOIN mahasiswas ON prodis.id = mahasiswas.prodi_id
-            GROUP BY prodis.id, prodis.nama
-        '); 
+        $grafikmhs = DB::select("SELECT prodis.nama_prodi, 
+                                COUNT(*) as jumlah_mhs 
+                                FROM mahasiswas
+                                JOIN prodis 
+                                ON mahasiswas.prodi_id = prodis.id
+                                GROUP BY prodis.nama_prodi");
+
+        // SQLite tidak mendukung LEFT() -> gunakan substr()
+        $grafik_angkatan = DB::select("
+                                SELECT substr(npm, 1, 2) as angkatan,
+                                       COUNT(*) as total_mhs
+                                FROM mahasiswas
+                                GROUP BY substr(npm, 1, 2)");
+
+        return view('dashboard', compact('grafikmhs', 'grafik_angkatan'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
 }
