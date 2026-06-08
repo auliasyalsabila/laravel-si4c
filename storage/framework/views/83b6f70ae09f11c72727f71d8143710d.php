@@ -110,7 +110,7 @@
         <div class="card-body login-card-body">
           <p class="login-box-msg">Sign in to start your session</p>
 
-          <form action="{{ route('login') }}" method="post">
+          <form action="<?php echo e(route('login')); ?>" method="post">
             <div class="input-group mb-1">
               <div class="form-floating">
                 <input name="email" type="email" class="form-control" value="" placeholder="" />
@@ -279,3 +279,4 @@
 </body>
   <!--end::Body-->
 </html>
+<?php /**PATH C:\Users\user1\Documents\laravel-si4c\resources\views/auth/login.blade.php ENDPATH**/ ?>

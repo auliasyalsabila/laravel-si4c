@@ -1,0 +1,1 @@
+<?php /**PATH C:\Users\user1\Documents\laravel-si4c\resources\views/auth/login-adminlte.blade.php ENDPATH**/ ?>
