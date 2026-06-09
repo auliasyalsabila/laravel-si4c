@@ -4,7 +4,7 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\Fakultas;
+use App\Models\fakultas;
 use App\Models\Prodi;
 use Illuminate\Http\Request;
 
@@ -26,7 +26,7 @@ class ProdiController extends Controller
      */
     public function create()
     {
-        $fakultas = Fakultas::all(); //untuk list dropdown fakultas
+        $fakultas = fakultas::all(); //untuk list dropdown fakultas
         return view('prodi.create', compact('fakultas'));
     }
 
